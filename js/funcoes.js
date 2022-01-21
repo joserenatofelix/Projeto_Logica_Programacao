@@ -17,18 +17,18 @@ if (imc < 18.5) {
 }
     return situacao;
 }
-function mostraPaciente(nomePaciente, pesoPaciente, alturaPaciente) {
-    var imc = calculaIMC(pesoPaciente, alturaPaciente);
+function mostraPaciente(paciente) {
+    var imc = calculaIMC(paciente.peso, paciente.altura);
     var situação = verificaIMC(imc);
 
     var spanNome = document.getElementById("nome");
-spanNome.innerHTML = nomePaciente;
+spanNome.innerHTML = paciente,nome;
 
 var spanPeso = document.getElementById("peso");
-spanPeso.innerHTML = pesoPaciente;
+spanPeso.innerHTML = paciente.peso;
 
 var spanAltura = document.getElementById("altura");
-spanAltura.innerHTML = alturaPaciente;
+spanAltura.innerHTML = paciente.altura;
 
 var spanImc = document.getElementById("imc");
 spanImc.innerHTML = imc.toFixed(2);
