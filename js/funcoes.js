@@ -18,23 +18,45 @@ if (imc < 18.5) {
     return situacao;
 }
 function mostraPaciente(paciente) {
+
     var imc = calculaIMC(paciente.peso, paciente.altura);
     var situação = verificaIMC(imc);
 
-    var spanNome = document.getElementById("nome");
-spanNome.innerHTML = paciente,nome;
+var spanNome = document.getElementById("nome"); // <span id="nome"></span>
+spanNome.innerHTML = paciente.nome;
 
-var spanPeso = document.getElementById("peso");
+var spanPeso = document.getElementById("peso"); // <span id="peso"></span>
 spanPeso.innerHTML = paciente.peso;
 
-var spanAltura = document.getElementById("altura");
+var spanAltura = document.getElementById("altura"); // <span id="altura"></span>
 spanAltura.innerHTML = paciente.altura;
 
-var spanImc = document.getElementById("imc");
+var spanImc = document.getElementById("imc"); // <span id="imc"></span>
 spanImc.innerHTML = imc.toFixed(2);
 
-var spanSituacao = document.getElementById("situacao");
+var spanSituacao = document.getElementById("situacao"); //<span id="situacao"></span>
 spanSituacao.innerHTML = situacao;
+}
+function lePaciente() {
+    var inputNome = document.getElementById("txtNome"); //<input type="text" id="txtNome"....
+    var inputPeso = document.getElementById("numPeso"); //<input type="text" id="numPeso"....
+    var inputAltura = document.getElementById("numAltura"); //<input type="text" id="numAltura"....
 
+    var paciente = {
+        nome : inputNome.value,
+        peso : inputPeso.value,
+        altura : inputAltura.value
+    }
+    return paciente;
+}
 
+function geraRelatorio(pacientes) {
+    var listaNumerada = document.getElementById("listaNumerada"); //<ol id="listaNumerada"></ol>
+    listaNumerada.innerHTML = ""; //limpa a lista
+
+    pacientes.forEach( (paciente) => {
+                              var imc = calculaIMC(paciente.peso, paciente.altura);
+                              var sit = verificaIMC(imc);
+                              listaNumerada.innerHTML += `<li> ${paciente.nome} - Situação: ${sit}</li>`;
+                            });
 }

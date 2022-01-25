@@ -1,7 +1,12 @@
-var paciente = {
-    nome = "Renato Felix",
-    peso = 76.00,
-    altura = 1.78
-}
+var pacientes = []; // vetor vazio
+var botao = document.getElementById("calcular");
+botao.addEventListener('click', function() {
+                                    var paciente = lePaciente();
+                                    pacientes.push(paciente); // Adiciona o paciente ao Vetor 
+                                    mostraPaciente( paciente );
+                                });
 
-mostraPaciente(paciente);
+var botaoRel = document.getElementById("relatorio"); // <button type="button" id="relatorio">Gerar Relatório</button>
+botaoRel.addEventListener('click', function() {
+                                        geraRelatorio(pacientes);
+                                    });
